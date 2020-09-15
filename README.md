@@ -18,10 +18,10 @@ Depending on which versions we were able to resize, the resized versions are add
 ## Command Line
 
 The script is run like:  
-    php ./imagine.php [feed id] "[image url]"
+    `php ./imagine.php [feed id] "[image url]"`
 
 So, something like this:
-    php ./imagine.php 75075 "https://www.theincomparable.com/imgs/logos/logo-batmanuniversity-3x.jpg?cache-buster=2019-06-11"
+    `php ./imagine.php 75075 "https://www.theincomparable.com/imgs/logos/logo-batmanuniversity-3x.jpg?cache-buster=2019-06-11"`
 
 That would give you these outputs:
 
