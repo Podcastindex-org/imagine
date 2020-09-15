@@ -1,5 +1,5 @@
 # imagine
-Image resizer and object storage.
+Image resizer for object storage.
 
 This is a script that takes a feed id and an image url as arguments on the command line, resizes the image to 2400px, 1200px, 600px and 300px, then moves them to object storage (minio expected) /data location.  It expects the bucket folder to be /feed.
 
