@@ -23,9 +23,9 @@ So, something like this:  php ./imagine.php 75075 "https://www.theincomparable.c
 
 That would give you these outputs:
 
--(https://images.podcastindex.org/feed/75075/2400.jpg?ts=1600189122)
--(https://images.podcastindex.org/feed/75075/1200.jpg?ts=1600189122)
--(https://images.podcastindex.org/feed/75075/600.jpg?ts=1600189122)
--(https://images.podcastindex.org/feed/75075/300.jpg?ts=1600189122)
+- (https://images.podcastindex.org/feed/75075/2400.jpg?ts=1600189122)
+- (https://images.podcastindex.org/feed/75075/1200.jpg?ts=1600189122)
+- (https://images.podcastindex.org/feed/75075/600.jpg?ts=1600189122)
+- (https://images.podcastindex.org/feed/75075/300.jpg?ts=1600189122)
 
 The resized files are moved to "/data/feed/[id]", which is where a minio server is expected to be running with "/data" as it's bucket volume.
