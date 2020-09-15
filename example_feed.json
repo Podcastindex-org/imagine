@@ -1,0 +1,36 @@
+{
+  "status": "true",
+  "feeds": [
+    {
+      "id": 75075,
+      "title": "Batman University",
+      "url": "https:\/\/feeds.theincomparable.com\/batmanuniversity",
+      "originalUrl": "https:\/\/feeds.theincomparable.com\/batmanuniversity",
+      "link": "https:\/\/www.theincomparable.com\/batmanuniversity\/",
+      "description": "Batman University is a seasonal podcast about you know who. It began with an analysis of episodes of \u201cBatman: The Animated Series\u201d but has now expanded to cover other series, movies, and media. Your professor is Tony Sindelar.",
+      "author": "Tony Sindelar",
+      "ownerName": "The Incomparable",
+      "imageOriginalUrl": "https:\/\/www.theincomparable.com\/imgs\/logos\/logo-batmanuniversity-3x.jpg?cache-buster=2019-06-11",
+      "imageResized2400": "https:\/\/images.podcastindex.org\/feed\/75075\/2400.jpg?ts=1600189122",
+      "imageResized1200": "https:\/\/images.podcastindex.org\/feed\/75075\/1200.jpg?ts=1600189122",
+      "imageResized600": "https:\/\/images.podcastindex.org\/feed\/75075\/600.jpg?ts=1600189122",
+      "imageResized300": "https:\/\/images.podcastindex.org\/feed\/75075\/300.jpg?ts=1600189122",
+      "lastUpdateTime": 1546399813,
+      "lastCrawlTime": 1599772496,
+      "lastParseTime": 1599334538,
+      "lastGoodHttpStatusTime": 1599772496,
+      "lastHttpStatus": 200,
+      "contentType": "application\/x-rss+xml",
+      "itunesId": 1441923632,
+      "generator": null,
+      "language": "",
+      "type": 0,
+      "dead": 0,
+      "crawlErrors": 0,
+      "parseErrors": 0
+    }
+  ],
+  "count": 1,
+  "query": "batman university",
+  "description": "Found matching feeds."
+}
