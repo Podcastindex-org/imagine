@@ -8,7 +8,9 @@ Each object url is appended with a unix timestamp. If the timestamp changed, the
 
 ## Example
 
-This would be a typical API response with feed metadata:  (https://raw.githubusercontent.com/Podcastindex-org/imagine/master/example_feed.json)
+This would be a typical API response with feed metadata:  
+
+https://raw.githubusercontent.com/Podcastindex-org/imagine/master/example_feed.json
 
 The original image given in the feed is referenced as "imageOriginalUrl".
 
@@ -19,7 +21,7 @@ Depending on which versions we were able to resize, the resized versions are add
 
 The script is run like:  
 
-`php ./imagine.php [feed id] "[image url]"`
+`php ./imagine.php <feed id> "<image url>"`
 
 So, something like this:
 
