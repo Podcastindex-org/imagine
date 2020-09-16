@@ -2,36 +2,33 @@
 <? include "$cg_confroot/$cg_templates/php_bin_init.php" ?>
 <?
 
-
 //Globals
-$feedRepo = "/data/feed/";
+$feedRepo = "/data/feed";
 $feedId = trim($argv[1]);
 $imageUrl = trim($argv[2]);
 $imageUrl = preg_replace('/\?.*/', '', $imageUrl);
+$imageUrlHash = crc32($imageUrl);
 $imageFileName = $feedId."_".cleanFilename(basename($imageUrl), TRUE, TRUE);
 $feedFile2400 = $feedId."_2400.jpg";
 $feedFile1200 = $feedId."_1200.jpg";
 $feedFile600 = $feedId."_600.jpg";
 $feedFile300 = $feedId."_300.jpg";
-
+$folderPath = $feedRepo."/".$feedId."/".$imageUrlHash;
 
 //Parameter check
 if(empty($feedId) || !is_numeric($feedId)) die("Bad feed id.");
 if(stripos($imageUrl, 'http') !== 0) die("Bad image url.");
-if(!is_dir($feedRepo.$feedId)) {
-    mkdir($feedRepo.$feedId, 777, TRUE);
+if(!is_dir($folderPath)) {
+    mkdir($folderPath, 777, TRUE);
 }
-
 
 //Download the image
 $response = fetchUrlExtra($imageUrl);
 if($response['status_code'] > 304 || empty($response['body'])) die("Failed to download the image.");
 
-
 //Write the image file
 $fpcResult = file_put_contents($imageFileName, $response['body']);
 if($fpcResult === FALSE || $fpcResult < 10) die("Failed to write the original image file to disk.");
-
 
 //Resize it to 2400, 1200, 600, 300
 echo image_resize($imageFileName, $feedFile2400, "jpg", 2400, NULL, NULL)."\n";
@@ -39,12 +36,11 @@ echo image_resize($imageFileName, $feedFile1200, "jpg", 1200, NULL, NULL)."\n";
 echo image_resize($imageFileName, $feedFile600, "jpg", 600, NULL, NULL)."\n";
 echo image_resize($imageFileName, $feedFile300, "jpg", 300, NULL, NULL)."\n";
 
-
 //Move to object storage main repository
-if(file_exists($feedFile2400)) rename($feedFile2400, "$feedRepo"."$feedId/2400.jpg");
-if(file_exists($feedFile1200)) rename($feedFile1200, "$feedRepo"."$feedId/1200.jpg");
-if(file_exists($feedFile600)) rename($feedFile600, "$feedRepo"."$feedId/600.jpg");
-if(file_exists($feedFile300)) rename($feedFile300, "$feedRepo"."$feedId/300.jpg");
+if(file_exists($feedFile2400)) rename($feedFile2400, "$folderPath/2400.jpg");
+if(file_exists($feedFile1200)) rename($feedFile1200, "$folderPath/1200.jpg");
+if(file_exists($feedFile600)) rename($feedFile600, "$folderPath/600.jpg");
+if(file_exists($feedFile300)) rename($feedFile300, "$folderPath/300.jpg");
 
 
 

@@ -1,9 +1,12 @@
-# imagine
+# Imagine
 Image resizer for object storage.
 
-This is a script that takes a feed id and an image url as arguments on the command line, resizes the image to 2400px, 1200px, 600px and 300px, then moves them to object storage (minio expected) /data location.  It expects the bucket folder to be /feed.
+This is a script that takes a feed id and an image url as arguments on the command line, resizes the image to 2400px, 
+1200px, 600px and 300px, then moves them to object storage (minio expected) /data location.  It expects the bucket 
+folder to be /feed.
 
-Each object url is appended with a unix timestamp. If the timestamp changed, the image has changed.
+Each object is stored with a CRC32 hash (of the original image url) in the path, so that if the CRC32 changes, then
+the original feed image changed.
 
 
 ## Example
@@ -14,7 +17,8 @@ https://raw.githubusercontent.com/Podcastindex-org/imagine/master/example_feed.j
 
 The original image given in the feed is referenced as "imageOriginalUrl".
 
-Depending on which versions we were able to resize, the resized versions are added to the API response as "imageResizedXXXX" where XXXX is the pixel width of the resized image.300px
+Depending on which versions we were able to resize, the resized versions are added to the API response as 
+"imageResizedXXXX" where XXXX is the pixel width of the resized image.
 
 
 ## Command Line
@@ -29,9 +33,10 @@ So, something like this:
 
 That would give you these outputs:
 
-- https://images.podcastindex.org/feed/75075/2400.jpg?ts=1600189122
-- https://images.podcastindex.org/feed/75075/1200.jpg?ts=1600189122
-- https://images.podcastindex.org/feed/75075/600.jpg?ts=1600189122
-- https://images.podcastindex.org/feed/75075/300.jpg?ts=1600189122
+- https://images.podcastindex.org/feed/75075/1534720231/2400.jpg
+- https://images.podcastindex.org/feed/75075/1534720231/1200.jpg
+- https://images.podcastindex.org/feed/75075/1534720231/600.jpg
+- https://images.podcastindex.org/feed/75075/1534720231/300.jpg
 
-The resized files are moved to "/data/feed/[id]", which is where a minio server is expected to be running with "/data" as it's bucket volume.
+The resized files are moved to "/data/feed/[id]/[crc32]", which is where a minio server is expected to be running 
+with "/data" as it's bucket volume.
